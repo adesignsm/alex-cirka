@@ -1,0 +1,14 @@
+.project-container {
+  padding: 1rem;
+  text-align: center;
+}
+
+.project-container h1 {
+  font-family: var(--title-font);
+  text-transform: uppercase;
+}
+
+.project-container h4 {
+  font-family: var(--paragraph-font);
+}
+/*# sourceMappingURL=projects.css.map */

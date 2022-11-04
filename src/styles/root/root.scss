@@ -1,0 +1,27 @@
+:root {
+    /*BODY*/
+    --body-padding: 1rem;;
+    --body-margin: 0;
+    --body-height: auto;
+    --body-overflow-x: hidden;
+    /*FONTS*/
+    --title-font: Helvetica, Black;
+    --paragraph-font: "Arial", sans-serif;
+    /*COLORS*/
+    --primary-color: #94FF55;
+    --secondary-color: #000;
+}
+
+body {
+    height: var(--body-height);
+    padding: var(--body-padding);
+    margin: var(--body-margin);
+    overflow-x: var(--body-overflow-x);
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

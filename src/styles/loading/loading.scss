@@ -1,0 +1,25 @@
+#loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-image: url(../../media/BOBBY-BULLY-CHAIN.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -30vh;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    display: table;
+
+    h1 {
+        margin: 0;
+        vertical-align: middle;
+        display: table-cell;
+        text-transform: uppercase;
+        font-family: var(--title-font);
+        font-weight: 900;
+        font-size: 5rem;
+        color: var(--primary-color);
+    }
+}

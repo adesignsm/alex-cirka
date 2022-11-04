@@ -1,0 +1,52 @@
+#main-menu-desktop {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  height: auto;
+  width: 100vw;
+  font-family: var(--title-font);
+}
+
+#main-menu-desktop #menu-container-desktop {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#main-menu-desktop h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 33vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+#main-menu-desktop h1:nth-child(1) {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+#main-menu-desktop h1:nth-child(2) {
+  text-align: center;
+}
+
+#main-menu-desktop h1:nth-child(3) {
+  text-align: right;
+  margin-right: 2rem;
+}
+
+#main-menu-desktop h1:hover {
+  color: var(--primary-color);
+}
+/*# sourceMappingURL=menu.css.map */
