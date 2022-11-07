@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 
 import sanityClient from "../client";
 import imageUrlBuilder from "@sanity/image-url";
+import {v4 as v4uuid} from "uuid";
 
 import "../styles/projects/projects.css";
 
@@ -29,24 +30,23 @@ const Projects = () => {
     // console.log(projectData);
 
     return (
-       <>
+       <React.Fragment key={v4uuid}>
         {projectData.map((project, i) => {
             return (
                 <div className="project-container">
                     <div className = "project-media-container">
                         {project.project_media.map((image) => {
-                            // console.log(image);
                             return (
                                 <img src={urlFor(image.asset._ref, image.image_width * 10)} />
                             )
                         })}
                     </div>
-                    <h1 key={i}> {project.project_title} </h1>
+                    <h1> {project.project_title} </h1>
                     <h4> {project.project_description} </h4>
                 </div>
             )
         })}
-       </>
+       </React.Fragment>
     )
 }
 
