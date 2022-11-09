@@ -4,6 +4,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import projects from './projects'
 import hero from './hero'
 import fontFile from './fontFile'
+import footer from './footer'
 
 export default createSchema({
   name: 'default',
@@ -11,5 +12,6 @@ export default createSchema({
     projects,
     hero,
     fontFile,
+    footer
   ]),
 })

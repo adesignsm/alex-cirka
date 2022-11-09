@@ -37,7 +37,7 @@ const Projects = () => {
                     <div className = "project-media-container">
                         {project.project_media.map((image) => {
                             return (
-                                <img src={urlFor(image.asset._ref, image.image_width * 10)} />
+                                <img src={urlFor(image.asset._ref, Math.floor(image.image_width * 10))} />
                             )
                         })}
                     </div>

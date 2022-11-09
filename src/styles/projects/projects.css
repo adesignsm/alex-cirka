@@ -11,4 +11,8 @@
 .project-container h4 {
   font-family: var(--paragraph-font);
 }
+
+.project-container img {
+  max-width: 100%;
+}
 /*# sourceMappingURL=projects.css.map */

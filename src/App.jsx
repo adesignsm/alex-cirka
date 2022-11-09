@@ -7,6 +7,7 @@ import Menu from "./components/Menu";
 import Loading from "./components/Loading";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
+import Footer from "./components/Footer";
 
 const App = () => {
     const [loadingState, setLoadingState] = useState(false);
@@ -26,6 +27,7 @@ const App = () => {
             <div id = "loading-page-div"><Loading /></div>
             <Hero />
             <Projects />
+            <Footer />
         </>
     )
 }
