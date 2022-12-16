@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 
-import sanityClient from "../client";
+import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import {v4 as v4uuid} from "uuid";
 
-import "../styles/projects/projects.css";
+import "../../styles/projects/projects.css";
 
 const Projects = () => {
     const [projectData, setProjectData] = useState([]);

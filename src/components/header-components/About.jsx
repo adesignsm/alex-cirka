@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
-import sanityClient from "../client";
+import sanityClient from "../../client";
 
 import {Style} from "react-style-tag";
-import "../styles/hero/hero.css";
+import "../../styles/about/about.css";
 
-const Hero = () => {
-    const [heroData, setHeroData] = useState("");
+const About = () => {
+    const [aboutData, setHeroData] = useState("");
     const [fontData, setFontData] = useState([]);
 
     const editUrlString = (urlString) => {
@@ -17,11 +17,11 @@ const Hero = () => {
 
     useEffect(() => {
         sanityClient.fetch(
-            `*[_type == "hero"]{
-                hero_description
+            `*[_type == "about"]{
+                about_description
               }`
         ).then((data) => {
-            setHeroData(data[0].hero_description);
+            setHeroData(data[0].about_description);
             sanityClient.fetch(
                 `*[_type == "font"]{
                     font_file_upload,
@@ -38,22 +38,22 @@ const Hero = () => {
 
     return (
         <>
-            <div id = "hero-container">
-                <div id = "hero-description">
+            <div id = "about-container">
+                <div id = "about-description">
                     <Style>
                         {`
                             @font-face {
-                                font-family: "Hero Font";
+                                font-family: "About Font";
                                 src: url(${fontData});
                             }
                             `
                         }
                     </Style>
-                    <h1 style={{fontFamily: "Hero Font"}}>{heroData}</h1> 
+                    <h1 style={{fontFamily: "About Font"}}>{aboutData}</h1> 
                 </div>
             </div>
         </>
     )
 }
 
-export default Hero;
+export default About;

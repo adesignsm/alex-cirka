@@ -13,16 +13,19 @@
 }
 
 #main-menu-desktop #menu-container-desktop {
-  width: 100vw;
+  width: 95vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#main-menu-desktop h1 {
+#main-menu-desktop a {
   margin-top: 0;
   margin-bottom: 0;
   width: 33vw;
+  font-size: 2vw;
+  text-decoration: none;
+  color: #000;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -32,21 +35,25 @@
   transition: all .2s ease;
 }
 
-#main-menu-desktop h1:nth-child(1) {
+#main-menu-desktop a:nth-child(1) {
   text-align: left;
   margin-left: 1rem;
 }
 
-#main-menu-desktop h1:nth-child(2) {
+#main-menu-desktop a:nth-child(2) {
   text-align: center;
 }
 
-#main-menu-desktop h1:nth-child(3) {
+#main-menu-desktop a:nth-child(3) {
   text-align: right;
   margin-right: 2rem;
 }
 
-#main-menu-desktop h1:hover {
+#main-menu-desktop a:hover {
   color: var(--primary-color);
+}
+
+.mobile-nav-bar {
+  display: none;
 }
 /*# sourceMappingURL=menu.css.map */
