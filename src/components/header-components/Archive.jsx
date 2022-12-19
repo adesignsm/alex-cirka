@@ -30,7 +30,6 @@ const Archive = () => {
         <>
             <div id = "indexed-projects-container">
                 {Object.keys(projectData).map((project) => {
-                    console.log(projectData[project].project_media[0].asset._ref);
                     let link = `/projects/${projectData[project].project_title}`;
                     let projectLink = link.replace(" ", "-");
 
