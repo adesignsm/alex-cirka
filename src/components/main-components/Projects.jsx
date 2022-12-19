@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { NavLink } from "react-router-dom";
 
 import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -10,7 +11,6 @@ const Projects = () => {
     const [projectData, setProjectData] = useState([]);
 
     const builder = imageUrlBuilder(sanityClient);
-
     const urlFor = (source, width) => {
         return builder.image(source).auto('format').width(width).url();  
     }
@@ -27,8 +27,6 @@ const Projects = () => {
         }).catch(console.error);
     }, []);
 
-    // console.log(projectData);
-
     return (
        <React.Fragment key={v4uuid}>
         {projectData.map((project, i) => {
@@ -36,8 +34,13 @@ const Projects = () => {
                 <div className="project-container">
                     <div className = "project-media-container">
                         {project.project_media.map((image) => {
+                            let link = `/projects/${project.project_title}`;
+                            let projectLink = link.replace(" ", "-");
+
                             return (
-                                <img src={urlFor(image.asset._ref, Math.floor(image.image_width * 10))} />
+                                <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}> 
+                                    <img src={urlFor(image.asset._ref, Math.floor(image.image_width * 10))} />
+                                </NavLink>
                             )
                         })}
                     </div>

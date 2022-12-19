@@ -26,9 +26,6 @@ const Hero = () => {
         }).catch(console.error);
     }, []);
 
-    console.log(Object.keys(heroImageData).length);
-    console.log(heroImageRef);
-
     return (
         <>
             {Object.keys(heroImageData).length ? <img id = "hero-image" src={urlFor(heroImageRef, heroImageData.image_width * 18.8)} /> : null}

@@ -1,17 +1,14 @@
 #about-container {
   padding: 1rem;
 }
-
 #about-container #about-description {
   height: auto;
   width: 100%;
   background-color: var(--primary-color);
-  padding: .5rem;
+  padding: 0.5rem;
   font-size: 2rem;
   text-align: left;
 }
-
 #about-container #about-description h1 {
   margin-top: 0;
-}
-/*# sourceMappingURL=about.css.map */
+}/*# sourceMappingURL=about.css.map */

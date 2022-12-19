@@ -13,6 +13,8 @@ import Footer from "./components/Footer";
 import About from "./components/header-components/About";
 import Archive from "./components/header-components/Archive";
 
+import SingleProject from "./components/main-components/sub-main-components/SingleProject";
+
 const App = () => {
     const [loadingState, setLoadingState] = useState(false);
 
@@ -27,17 +29,18 @@ const App = () => {
 
     return (
         <>
-            <div id = "loading-page-div"><Loading /></div>
             <BrowserRouter>
                 <Menu />
                 <div className="page-container">
+                    <div id = "loading-page-div"><Loading /></div>
                     <Routes>
                         <Route path="/about" element={<About />}/>
                         <Route exact path="/" element={<Home />} />
                         <Route path="/archive" element={<Archive />} />
+                        <Route path="/projects/:projectId" element={<SingleProject />} />
                     </Routes>
+                    <Footer />
                 </div>
-                <Footer />
             </BrowserRouter>
         </>
     )
