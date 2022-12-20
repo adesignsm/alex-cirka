@@ -33,8 +33,6 @@ const Archive = () => {
                     let link = `/projects/${projectData[project].project_title}`;
                     let projectLink = link.replace(" ", "-");
 
-                    console.log(projectLink);
-
                     return (
                         <div className="thumbnail">
                             <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}> 

@@ -30,8 +30,6 @@ const SingleProject = () => {
                         let rawProjectTitle = projectData[project].project_title
                         let projectTitle = rawProjectTitle.replace(" ", "-");
                         let windowUrl = window.location.href;
-
-                        console.log(projectTitle);
                         
                         if (windowUrl.indexOf(projectTitle) !== -1) {
                             return (

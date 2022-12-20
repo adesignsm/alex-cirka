@@ -16,7 +16,6 @@
   display: flex;
 }
 #main-menu-desktop a {
-  margin-top: 0;
   margin-bottom: 0;
   width: 33vw;
   font-size: 2vw;
@@ -40,6 +39,9 @@
 }
 #main-menu-desktop a:hover {
   color: var(--primary-color);
+}
+#main-menu-desktop .navbar-item img {
+  width: 30%;
 }
 
 .mobile-nav-bar {
