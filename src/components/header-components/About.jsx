@@ -7,12 +7,13 @@ import "../../styles/about/about.css";
 const About = () => {
     const [aboutData, setHeroData] = useState("");
     const [fontData, setFontData] = useState([]);
+    const [aboutFont, setAboutFont] = useState([]);
 
     const editUrlString = (urlString) => {
         let strUrl = urlString.replace(/file-/g, "");
         strUrl = strUrl.replace("-", ".");
 
-        setFontData(`https://cdn.sanity.io/files/ot5ilm3g/production/${strUrl}`);
+        return `https://cdn.sanity.io/files/ot5ilm3g/production/${strUrl}`;
     }
 
     useEffect(() => {
@@ -25,9 +26,10 @@ const About = () => {
             sanityClient.fetch(
                 `*[_type == "font"]{
                     font_file_upload,
+                    font_name
                 }`
             ).then((data) => {
-                editUrlString(data[0].font_file_upload.asset._ref);
+                setFontData(data);
             }).catch((error) => {
                 console.log(error);
             })
@@ -35,6 +37,19 @@ const About = () => {
             console.log(error);
         })
     }, []);
+
+    const sortFontData = (data) => {
+        console.log(data);
+        data.forEach((font) => {
+            if (font.font_name === "About Page - hero description") {
+                setAboutFont(editUrlString(font.font_file_upload.asset._ref));
+            }
+        })
+    }
+
+    useEffect(() => {
+        sortFontData(fontData);
+    });
 
     return (
         <>
@@ -44,7 +59,7 @@ const About = () => {
                         {`
                             @font-face {
                                 font-family: "About Font";
-                                src: url(${fontData});
+                                src: url(${aboutFont});
                             }
                             `
                         }

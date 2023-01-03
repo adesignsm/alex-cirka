@@ -5,14 +5,26 @@ import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import {v4 as v4uuid} from "uuid";
 
+import {Style} from "react-style-tag";
+
 import "../../styles/projects/projects.css";
 
 const Projects = () => {
     const [projectData, setProjectData] = useState([]);
+    const [fontData, setFontData] = useState([]);
+    const [headingFontData, setHeadingFontData] = useState([]);
+    const [bodyFontData, setBodyFontData] = useState([]);
 
     const builder = imageUrlBuilder(sanityClient);
     const urlFor = (source, width) => {
         return builder.image(source).auto('format').width(width).url();  
+    }
+
+    const editUrlString = (urlString) => {
+        let strUrl = urlString.replace(/file-/g, "");
+        strUrl = strUrl.replace("-", ".");
+
+        return `https://cdn.sanity.io/files/ot5ilm3g/production/${strUrl}`;
     }
 
     useEffect(() => {
@@ -24,8 +36,32 @@ const Projects = () => {
               }`
         ).then((data) => {
             setProjectData(data);
+            sanityClient.fetch(
+                `*[_type == "font"]{
+                    font_name,
+                    font_file_upload,
+                }`
+            ).then((data) => {
+                setFontData(data);
+            }).catch((error) => {
+                console.log(error);
+            })
         }).catch(console.error);
     }, []);
+
+    const sortFontData = (data) => {
+        data.forEach((font) => {
+            if (font.font_name === "Home Page - project body text") {
+                setBodyFontData(editUrlString(font.font_file_upload.asset._ref));
+            } else if (font.font_name === "Home Page - project heading text") {
+                setHeadingFontData(editUrlString(font.font_file_upload.asset._ref));
+            }
+        })
+    }
+    
+    useEffect(() => {
+        sortFontData(fontData);
+    });
 
     return (
        <React.Fragment key={v4uuid}>
@@ -44,8 +80,22 @@ const Projects = () => {
                             )
                         })}
                     </div>
-                    <h1> {project.project_title} </h1>
-                    <h4> {project.project_description} </h4>
+                    <Style>
+                        {`
+                            @font-face {
+                                font-family: "Project Heading Font";
+                                src: url(${headingFontData});
+                            }
+
+                            @font-face {
+                                font-family: "Project Body Font";
+                                src: url(${bodyFontData});
+                            }
+                            `
+                        }
+                    </Style>
+                    <h1 style={{fontFamily: "Project Heading Font"}}> {project.project_title} </h1>
+                    <h4 style={{fontFamily: "Project Body Font"}}> {project.project_description} </h4>
                 </div>
             )
         })}

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import $ from "jquery";
 
 import "./styles/root/root.css";
@@ -34,7 +34,7 @@ const App = () => {
                 <div className="page-container">
                     <div id = "loading-page-div"><Loading /></div>
                     <Routes>
-                        <Route path="/about" element={<About />}/>
+                        <Route path="/about" element={<About />} />
                         <Route exact path="/" element={<Home />} />
                         <Route path="/archive" element={<Archive />} />
                         <Route path="/projects/:projectId" element={<SingleProject />} />
