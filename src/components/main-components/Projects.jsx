@@ -32,6 +32,8 @@ const Projects = () => {
             `*[_type == "projects"]{
                 project_title,
                 project_media,
+                video_embed,
+                video_file,
                 project_description
               }`
         ).then((data) => {
@@ -69,15 +71,41 @@ const Projects = () => {
             return (
                 <div className="project-container">
                     <div className = "project-media-container">
-                        {project.project_media.map((image) => {
-                            let link = `/projects/${project.project_title}`;
-                            let projectLink = link.replace(" ", "-");
+                        {project.project_media.map((media) => {
+                            if (media._type === "image_upload") {
+                                let link = `/projects/${project.project_title}`;
+                                let projectLink = link.replace(" ", "-");
+                                return (
+                                    <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}> 
+                                        <img src={urlFor(media.asset._ref, Math.floor(media.image_width * 10))} />
+                                    </NavLink>
+                                )
+                            } else if (media._type === "video_file") {
+                                let link = `/projects/${project.project_title}`;
+                                let projectLink = link.replace(" ", "-");
 
-                            return (
-                                <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}> 
-                                    <img src={urlFor(image.asset._ref, Math.floor(image.image_width * 10))} />
-                                </NavLink>
-                            )
+                                return (
+                                    <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}>
+                                        <video autoPlay loop muted width={media.video_width * 10}><source src={editUrlString(media.asset._ref)} type="video/mp4"/></video>
+                                    </NavLink>
+                                )
+                            } else if (media._type === "video_embed") {
+                                let link = `/projects/${project.project_title}`;
+                                let projectLink = link.replace(" ", "-");
+
+                                return (
+                                    <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}>
+                                        <iframe 
+                                            src={media.video_embed} 
+                                            width={media.video_width * 10} 
+                                            height={media.video_width * 5} 
+                                            allowFullScreen 
+                                            autoPlay
+                                            frameBorder="0"
+                                        ></iframe>
+                                    </NavLink>
+                                )
+                            }
                         })}
                     </div>
                     <Style>

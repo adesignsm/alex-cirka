@@ -85,10 +85,17 @@ const SingleProject = () => {
                                         }
                                     </Style>
                                     <h1 style={{fontFamily: "Project Heading Font"}}> {projectData[project].project_title}</h1>
-                                    {projectData[project].project_media.map((i) => {
-                                        return (
-                                            <img src={urlFor(i.asset._ref)} />
-                                        )
+                                    {projectData[project].project_media.map((media) => {
+                                        console.log(media._type);
+                                        if (media._type === "image_upload") {
+                                            return (
+                                                <img src={urlFor(media.asset._ref)} />
+                                            )
+                                        } else if (media._type === "video_file") {
+                                            return (
+                                                <video autoPlay loop muted width={media.video_width * 10}><source src={editUrlString(media.asset._ref)} type="video/mp4"/></video>
+                                            )
+                                        }
                                     })}
                                     <h3 style={{fontFamily: "Project Body Font"}}> {projectData[project].project_description} </h3>
                                 </div>

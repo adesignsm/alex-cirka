@@ -39,7 +39,6 @@ const About = () => {
     }, []);
 
     const sortFontData = (data) => {
-        console.log(data);
         data.forEach((font) => {
             if (font.font_name === "About Page - hero description") {
                 setAboutFont(editUrlString(font.font_file_upload.asset._ref));

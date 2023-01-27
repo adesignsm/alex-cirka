@@ -7,6 +7,7 @@ import heroImage from './heroImage'
 import headerLogo from './headerLogo'
 import fontFile from './fontFile'
 import footer from './footer'
+import colors from './colors'
 
 export default createSchema({
   name: 'default',
@@ -16,6 +17,7 @@ export default createSchema({
     headerLogo,
     heroImage,
     fontFile,
+    colors,
     footer
   ]),
 })
