@@ -45,9 +45,11 @@ const Hero = () => {
 
     return (
         <>
-            {Object.keys(heroImageData).length ? <img id = "hero-image" src={urlFor(heroImageRef, heroImageData.image_width * 18.8)} /> : null}
-            {Object.keys(heroVideoEmbedRef).length ? <iframe src={heroVideoEmbedRef} allowFullScreen></iframe> : null}
-            {Object.keys(heroVideoRef).length ? <video autoPlay loop muted><source src={heroVideoRef} type="video/mp4"/></video> : null}
+            <div className="hero-container">
+                {Object.keys(heroImageData).length ? <img id = "hero-image" src={urlFor(heroImageRef, heroImageData.image_width * 18.8)} /> : null}
+                {Object.keys(heroVideoEmbedRef).length ? <iframe src={heroVideoEmbedRef} allowFullScreen></iframe> : null}
+                {Object.keys(heroVideoRef).length ? <video autoPlay loop muted><source src={heroVideoRef} type="video/mp4"/></video> : null}
+            </div>
         </>
     )
 }

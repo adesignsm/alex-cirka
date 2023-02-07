@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
-import imageUrlBuilder from "@sanity/image-url";
 import {Style} from "react-style-tag";
 
 const Colors = () => {
@@ -10,7 +9,6 @@ const Colors = () => {
     const [aboutBg, setAboutBg] = useState("");
     const [aboutDescriptionBg, setAboutDescriptionBg] = useState("");
     const [archiveBg, setArchiveBg] = useState("");
-    const [projectBg, setProjectBg] = useState("");
     const [footerBg, setFooterBg] = useState("");
 
     /*fonts*/
@@ -22,7 +20,6 @@ const Colors = () => {
 
     const [hoverColor, setHoverColor] = useState("");
 
-
     useEffect(() => {
         sanityClient.fetch(
             `*[_type == "colors"]{
@@ -33,7 +30,7 @@ const Colors = () => {
             data.forEach((obj) => {
                 if (obj.color_code_element_name === "Project Title Font") {
                     setProjectTitleColor(obj.color_code);
-                } else if (obj.color_code_element_name === "Navigation Bar") {
+                } else if (obj.color_code_element_name === "Navigation Bar Background") {
                     setNavBg(obj.color_code);
                 } else if (obj.color_code_element_name === "Font Hover") {
                     setHoverColor(obj.color_code);
@@ -55,8 +52,6 @@ const Colors = () => {
                     setFooterBg(obj.color_code);
                 } else if (obj.color_code_element_name === "Home Background") {
                     setBodyBg(obj.color_code);
-                } else if (obj.color_code_element_name === "Project Background") {
-                    setProjectBg(obj.color_code);
                 }
             })  
         }).catch(console.error);
@@ -69,6 +64,7 @@ const Colors = () => {
                 body, html {
                     padding: 0;
                     margin: 0;
+                    background-color: ${bodyBg};
                 }
 
                 /*nav styles*/
@@ -90,9 +86,6 @@ const Colors = () => {
                 }
 
                 /*project styles*/
-                .project-container {
-                    background-color: ${projectBg};
-                }
                 .project-container h1 {
                     color: ${projectTitleColor};
                 }

@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import "./styles/root/root.css";
 import Colors from "./components/Colors";
+import Misc from "./components/Misc";
 
 import Menu from "./components/main-components/Menu";
 import Home from "./components/Home";
@@ -29,6 +30,7 @@ const App = () => {
         <>
             <BrowserRouter>
                 <Colors />
+                <Misc />
                 <Menu />
                 <div className="page-container">
                     <div id = "loading-page-div"><Loading /></div>

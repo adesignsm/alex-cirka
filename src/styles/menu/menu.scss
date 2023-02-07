@@ -3,14 +3,14 @@
     top: 0;
     left: 0;
     z-index: 999;
-    padding-top: 2rem;
     padding-bottom: 2rem;
     height: auto;
-    width: 100vw;
 
     #menu-container-desktop {
-        width: 95vw;
+        width: 100%;
         display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     a {
@@ -19,13 +19,11 @@
         font-size: 2vw;
         text-decoration: none;
         color: #000;
-        justify-content: space-between;
         text-transform: uppercase;
         cursor: pointer;
 
         &:nth-child(1) {
             text-align: left;
-            margin-left: 1rem;
         }
 
         &:nth-child(2) {
@@ -34,7 +32,6 @@
 
         &:nth-child(3) {
             text-align: right;
-            margin-right: 2rem;
         }
 
         -webkit-transition: all .2s ease;
@@ -51,10 +48,21 @@
     .navbar-item {
         img {
             width: 30%;
+            height: auto;
         }
     }
 }
 
 .mobile-nav-bar {
     display: none;
+}
+
+@media only screen and (min-width: 330px) and (max-width: 690px) {
+    #menu-container-desktop a {
+        font-size: 6vw;
+    }
+
+    #main-menu-desktop .navbar-item img {
+        width: 80%;
+    }
 }

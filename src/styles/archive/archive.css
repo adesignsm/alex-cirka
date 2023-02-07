@@ -1,3 +1,13 @@
+#indexed-projects-container {
+  height: 100vh;
+  width: 100%;
+}
+#indexed-projects-container .thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 #indexed-projects-container .thumbnail img {
+  border-radius: 20px;
   width: 20vw;
 }/*# sourceMappingURL=archive.css.map */

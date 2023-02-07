@@ -1,17 +1,16 @@
 #main-menu-desktop {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
   z-index: 999;
-  padding-top: 2rem;
   padding-bottom: 2rem;
   height: auto;
-  width: 100vw;
 }
 #main-menu-desktop #menu-container-desktop {
-  width: 95vw;
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #main-menu-desktop a {
   margin-bottom: 0;
@@ -19,29 +18,36 @@
   font-size: 2vw;
   text-decoration: none;
   color: #000;
-  justify-content: space-between;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 #main-menu-desktop a:nth-child(1) {
   text-align: left;
-  margin-left: 1rem;
 }
 #main-menu-desktop a:nth-child(2) {
   text-align: center;
 }
 #main-menu-desktop a:nth-child(3) {
   text-align: right;
-  margin-right: 2rem;
 }
 #main-menu-desktop a:hover {
   color: var(--primary-color);
 }
 #main-menu-desktop .navbar-item img {
   width: 30%;
+  height: auto;
 }
 
 .mobile-nav-bar {
   display: none;
+}
+
+@media only screen and (min-width: 330px) and (max-width: 690px) {
+  #menu-container-desktop a {
+    font-size: 6vw;
+  }
+  #main-menu-desktop .navbar-item img {
+    width: 80%;
+  }
 }/*# sourceMappingURL=menu.css.map */
