@@ -5,6 +5,8 @@ import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import {Style} from "react-style-tag";
 
+import Loading from "../Loading";
+
 import $ from "jquery";
 import "jquery-ui-bundle";
 
@@ -52,6 +54,7 @@ const Archive = () => {
 
     return (
         <>
+            <Loading />
             <div id = "indexed-projects-container">
                 {Object.keys(projectData).map((project) => {
                     let link = `/projects/${projectData[project].project_title}`;

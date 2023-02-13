@@ -6,9 +6,32 @@
   width: 100%;
   background-color: var(--primary-color);
   padding: 0.5rem;
-  font-size: 2rem;
-  text-align: left;
+  font-size: 1.5rem;
+  text-align: center;
 }
 #about-container #about-description h1 {
   margin-top: 0;
+  padding: 5rem 9rem;
+  font-weight: bolder;
+}
+#about-container .about-clients {
+  height: auto;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+}
+#about-container .about-clients h1 {
+  font-size: 3rem;
+}
+#about-container .about-clients ul {
+  list-style: none;
+}
+#about-container .about-clients li {
+  display: inline;
+  font-size: 4em;
+  margin-right: 1rem;
+  margin-left: 1em;
+}
+#about-container .about-clients marquee {
+  transition: all 0.5s ease;
 }/*# sourceMappingURL=about.css.map */

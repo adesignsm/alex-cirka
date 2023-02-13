@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import sanityClient from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
 
+import Loading from "../../Loading";
+
 import {Style} from "react-style-tag";
 
 const SingleProject = () => {
@@ -60,6 +62,7 @@ const SingleProject = () => {
 
     return (
         <>
+            <Loading />
             {projectData.length && 
                 <div id = "single-project-container">
                     {Object.keys(projectData).map((project) => {

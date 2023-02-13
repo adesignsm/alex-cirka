@@ -7,6 +7,12 @@ export default {
             name: "about_description",
             type: "text",
             title: "About Description",
+        },
+        {
+            name: "about_clients",
+            type: "array",
+            title: "Past Clients",
+            of: [{type: "string"}]
         }
     ]
 }

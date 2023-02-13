@@ -79,6 +79,9 @@ const Colors = () => {
                 #about-container #about-description h1 {
                     color: ${aboutFontColor};
                 }
+                #about-container .about-clients {
+                    color: ${aboutFontColor};
+                }
 
                 /*archive styles*/
                 #indexed-projects-container {

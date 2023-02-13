@@ -4,8 +4,11 @@ import sanityClient from "../../client";
 import {Style} from "react-style-tag";
 import "../../styles/about/about.css";
 
+import Loading from "../Loading";
+
 const About = () => {
-    const [aboutData, setHeroData] = useState("");
+    const [aboutDescriptionData, setAboutDescriptionData] = useState("");
+    const [aboutClientsData, setAboutClientsData] = useState([]);
     const [fontData, setFontData] = useState([]);
     const [aboutFont, setAboutFont] = useState([]);
 
@@ -19,10 +22,12 @@ const About = () => {
     useEffect(() => {
         sanityClient.fetch(
             `*[_type == "about"]{
-                about_description
+                about_description,
+                about_clients
               }`
         ).then((data) => {
-            setHeroData(data[0].about_description);
+            setAboutDescriptionData(data[0].about_description);
+            setAboutClientsData(data[0].about_clients);
             sanityClient.fetch(
                 `*[_type == "font"]{
                     font_file_upload,
@@ -38,6 +43,8 @@ const About = () => {
         })
     }, []);
 
+    console.log(aboutClientsData);
+
     const sortFontData = (data) => {
         data.forEach((font) => {
             if (font.font_name === "About Page - hero description") {
@@ -52,6 +59,7 @@ const About = () => {
 
     return (
         <>
+            <Loading />
             <div id = "about-container">
                 <div id = "about-description">
                     <Style>
@@ -63,7 +71,19 @@ const About = () => {
                             `
                         }
                     </Style>
-                    <h1 style={{fontFamily: "About Font"}}>{aboutData}</h1> 
+                    <h1 style={{fontFamily: "About Font"}}>{aboutDescriptionData}</h1>
+                </div>
+                <div className="about-clients" style={{fontFamily: "About Font"}}>
+                    <h1> Past Clients </h1>
+                    <marquee width="100%" direction="left" height="100px">
+                        <ul>
+                            {aboutClientsData.map((client) => {
+                                return (
+                                    <li>{client}</li>
+                                );
+                            })}
+                        </ul>
+                    </marquee>
                 </div>
             </div>
         </>
