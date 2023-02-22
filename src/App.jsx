@@ -14,8 +14,31 @@ import Archive from "./components/header-components/Archive";
 import SingleProject from "./components/main-components/sub-main-components/SingleProject";
 
 const App = () => {
+    setInterval(() => {
+        if (window.location.href.indexOf("/archive") != -1) {
+            setTimeout(() => {
+                document.getElementsByTagName("body")[0].style.backgroundColor = "#000";
+                document.querySelector(".navbar").style.backgroundColor = "#000";
+
+                document.querySelector("#main-menu-desktop a.navbar-item:nth-child(1)").style.color = "#F5FD9D";
+                document.querySelector("#main-menu-desktop a.navbar-item:nth-child(2)").style.color = "#F5FD9D";
+                document.querySelector("#main-menu-desktop a.navbar-item:nth-child(3)").style.color = "#F5FD9D";
+            }, 500);
+        } else {
+            setTimeout(() => {
+                document.getElementsByTagName("body")[0].style.backgroundColor = "#F5FD9D";
+                document.querySelector(".navbar").style.backgroundColor = "#F5FD9D";
+    
+                document.querySelector("#main-menu-desktop a.navbar-item:nth-child(1)").style.color = "#000";
+                document.querySelector("#main-menu-desktop a.navbar-item:nth-child(2)").style.color = "#000";
+                document.querySelector("#main-menu-desktop a.navbar-item:nth-child(3)").style.color = "#000";
+            }, 1000);
+        }
+    }, 100);
+
     return (
         <>
+            <div className="noise-overlay" />
             <BrowserRouter>
                 <Colors />
                 <Misc />

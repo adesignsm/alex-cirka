@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
+import $ from "jquery";
 
 import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -26,6 +27,49 @@ const Projects = () => {
 
         return `https://cdn.sanity.io/files/ot5ilm3g/production/${strUrl}`;
     }
+
+    let $myDiv = $(".project-title");
+
+    function isTouchDevice() {
+        try {
+            document.createEvent("TouchEvent");
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    const move = (e) => {
+        try {
+            var x = !isTouchDevice() ? e.pageX : e.touches[0].pageX;
+            var y = !isTouchDevice() ? e.pageY : e.touches[0].pageY;
+        } catch (e) {}
+
+        document.querySelector(".project-title").style.left = x - 140 + "px";
+        document.querySelector(".project-title").style.top = y - 190 + "px";
+
+        if (e.target.className === "project-item") {
+            $myDiv.fadeIn(250);
+            $myDiv.html(e.target.dataset.projectTitle);
+        } else {
+            $myDiv.fadeOut(250);
+        }
+    };
+
+    document.addEventListener("mousemove", (e) => {
+        if (window.location.href.includes("/Project-")) {
+            return;
+        } else {
+            move(e);
+        }
+    });
+    document.addEventListener("touchmove", (e) => {
+        if (window.location.href.includes("/Project-")) {
+            return;
+        } else {
+            move(e);
+        }
+    });
 
     useEffect(() => {
         sanityClient.fetch(
@@ -67,6 +111,7 @@ const Projects = () => {
 
     return (
        <React.Fragment key={v4uuid}>
+        <span className="project-title"> TEST </span>
         {projectData.map((project, i) => {
             return (
                 <div className="project-container">
@@ -77,7 +122,7 @@ const Projects = () => {
                                 let projectLink = link.replace(" ", "-");
                                 return (
                                     <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}> 
-                                        <img src={urlFor(media.asset._ref, Math.floor(media.image_width * 10))} />
+                                        <img className="project-item" data-project-title={project.project_title} src={urlFor(media.asset._ref, Math.floor(media.image_width * 10))} />
                                     </NavLink>
                                 )
                             } else if (media._type === "video_file") {
@@ -86,7 +131,7 @@ const Projects = () => {
 
                                 return (
                                     <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}>
-                                        <video autoPlay loop muted width={media.video_width * 10}><source src={editUrlString(media.asset._ref)} type="video/mp4"/></video>
+                                        <video className="project-item" data-project-title={project.project_title} autoPlay loop muted width={media.video_width * 10}><source src={editUrlString(media.asset._ref)} type="video/mp4"/></video>
                                     </NavLink>
                                 )
                             } else if (media._type === "video_embed") {
@@ -102,6 +147,8 @@ const Projects = () => {
                                             allowFullScreen 
                                             autoPlay
                                             frameBorder="0"
+                                            className="project-item"
+                                            data-project-title={project.project_title}
                                         ></iframe>
                                     </NavLink>
                                 )

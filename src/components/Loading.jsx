@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import $, { type } from "jquery";
+import React, { useLayoutEffect, useEffect, useState } from "react";
+import $ from "jquery";
 
 import "../styles/loading/loading.css";
 import loadingBackground from "../media/BOBBY-BULLY-CHAIN.jpg";
@@ -52,7 +52,7 @@ const Loading = () => {
         }).catch(console.error);
     }, []);
     
-    useEffect(() => {
+    useLayoutEffect(() => {
         loadingReq().then(() => {
             const loadingScreen = document.getElementById("loading-page-div");
 
@@ -63,8 +63,8 @@ const Loading = () => {
         })
     });
 
-    console.log(loadingVideo);
-    console.log(loadingDefaultImage);
+    // console.log(loadingVideo);
+    // console.log(loadingDefaultImage);
 
     return (
         <>

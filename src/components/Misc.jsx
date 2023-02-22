@@ -44,20 +44,18 @@ const Misc = () => {
                 }
 
                 /*heading text margins*/
-                body, html h1, h2 {
+                h1, h2 {
                     margin: ${headingMargin}px;
                 }
 
                 /*body text margins*/
-                body, html h3, h4, h5, h6, p {
+                h3, h4, h5, h6, p {
                     margin: ${bodyMargin}px;
                 }
 
                 /*project media size*/
                 .project-container video, img {
-                    width: ${mediaSize}%;
-                    height: ${mediaSize}%;
-                    object-fit: cover;
+                    margin: ${projectMargin}px;
                 }
             `}
             </Style>
