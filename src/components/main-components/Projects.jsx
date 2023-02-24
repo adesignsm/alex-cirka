@@ -154,6 +154,10 @@ const Projects = () => {
                                 )
                             }
                         })}
+                                                    <div className="project-info">
+                                <h1 style={{fontFamily: "Project Heading Font"}}> {project.project_title} </h1>
+                                <h4 style={{fontFamily: "Project Body Font"}}> {project.project_description} </h4>
+                            </div>
                     </div>
                     <Style>
                         {`
@@ -169,8 +173,6 @@ const Projects = () => {
                             `
                         }
                     </Style>
-                    <h1 style={{fontFamily: "Project Heading Font"}}> {project.project_title} </h1>
-                    <h4 style={{fontFamily: "Project Body Font"}}> {project.project_description} </h4>
                 </div>
             )
         })}

@@ -87,7 +87,6 @@ const SingleProject = () => {
                                             `
                                         }
                                     </Style>
-                                    <h1 style={{fontFamily: "Project Heading Font"}}> {projectData[project].project_title}</h1>
                                     {projectData[project].project_media.map((media) => {
                                         console.log(media._type);
                                         if (media._type === "image_upload") {
@@ -100,7 +99,10 @@ const SingleProject = () => {
                                             )
                                         }
                                     })}
-                                    <h3 style={{fontFamily: "Project Body Font"}}> {projectData[project].project_description} </h3>
+                                    <div className="project-info">
+                                        <h1 style={{fontFamily: "Project Heading Font"}}> {projectData[project].project_title}</h1>
+                                        <h3 style={{fontFamily: "Project Body Font"}}> {projectData[project].project_description} </h3>
+                                    </div>
                                 </div>
                             )
                         }

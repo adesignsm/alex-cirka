@@ -36,9 +36,18 @@ const App = () => {
         }
     }, 100);
 
+    document.onmousemove = (e) => {
+        console.log(e.target)
+        let elements = e.target.getElementsByTagName("img");
+        Object.keys(elements).forEach((item) => {
+            elements[item].style.left = (e.clientX / window.innerWidth) * 5 + 1 + "%";
+            elements[item].style.top = -(e.clientY / window.innerHeight) * 5 + 1 + "%";
+        })
+    }
+
     return (
         <>
-            <div className="noise-overlay" />
+            <div id = "noise-overlay" className="noise-overlay" />
             <BrowserRouter>
                 <Colors />
                 <Misc />
