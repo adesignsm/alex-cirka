@@ -36,12 +36,48 @@
             margin-right: 1rem;
             margin-left: 1em;
         }
+    }
+}
 
-        marquee {
-            -webkit-transition: all .5s ease;
-            -moz-transition: all .5s ease;
-            -ms-transition: all .5s ease;
-            transition: all .5s ease;
+.contact-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+   
+    input[type=text], textarea {
+        background-color: transparent;
+        border: 2px solid #434343;
+        font-size: 3em;
+        margin: 1rem;
+        padding: 1rem;
+        width: 100%;
+        font-family: "About Font";
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        margin: 1rem;
+        padding: 1rem 5rem;
+        background-color: transparent;
+        border: 2px solid #333;
+        font-size: 2em;
+        color: #434343;
+
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        transition: all .2s ease;
+
+        &:hover {
+            background-color: #333;
+            color: #F5FD9D;
+            cursor: pointer;
         }
     }
 }

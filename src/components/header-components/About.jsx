@@ -1,10 +1,16 @@
 import React, {useState, useEffect} from "react";
+import emailjs from "emailjs-com";
+import { Form, Input, TextArea, Button } from "semantic-ui-react";
 import sanityClient from "../../client";
 
 import {Style} from "react-style-tag";
 import "../../styles/about/about.css";
 
 import Loading from "../Loading";
+
+const SERVICE_ID = "service_0segoxi";
+const TEMPLATE_ID = "template_mhea5zf";
+const USER_ID = "_4kt98Jj-6hp6cWoO";
 
 const About = () => {
     const [aboutDescriptionData, setAboutDescriptionData] = useState("");
@@ -43,14 +49,23 @@ const About = () => {
         })
     }, []);
 
-    console.log(aboutClientsData);
-
     const sortFontData = (data) => {
         data.forEach((font) => {
             if (font.font_name === "About Page - hero description") {
                 setAboutFont(editUrlString(font.font_file_upload.asset._ref));
             }
         })
+    }
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID).then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+
+        e.target.reset();
     }
 
     useEffect(() => {
@@ -75,7 +90,7 @@ const About = () => {
                 </div>
                 <div className="about-clients" style={{fontFamily: "About Font"}}>
                     <h1> Past Clients </h1>
-                    <marquee width="100%" direction="left" height="100px">
+                    <marquee width="120%" direction="left" height="100px" scrollamount="7">
                         <ul>
                             {aboutClientsData.map((client) => {
                                 return (
@@ -84,6 +99,14 @@ const About = () => {
                             })}
                         </ul>
                     </marquee>
+                </div>
+                <div className="contact-form-container">
+                    <Form onSubmit={(e) => handleOnSubmit(e)}>
+                        <Form.Field control={Input} name='user_email' placeholder='Email' required/>
+                        <Form.Field control={Input} name='user_name'placeholder='Name' required />
+                        <Form.Field control={TextArea} name='user_message' placeholder='Message'required/>
+                        <Button type='submit' color='green'>Submit</Button>
+                    </Form>
                 </div>
             </div>
         </>

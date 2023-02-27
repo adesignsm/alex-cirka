@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import $ from "jquery";
 
 import "./styles/root/root.css";
 import Colors from "./components/Colors";
@@ -36,18 +35,8 @@ const App = () => {
         }
     }, 100);
 
-    document.onmousemove = (e) => {
-        console.log(e.target)
-        let elements = e.target.getElementsByTagName("img");
-        Object.keys(elements).forEach((item) => {
-            elements[item].style.left = (e.clientX / window.innerWidth) * 5 + 1 + "%";
-            elements[item].style.top = -(e.clientY / window.innerHeight) * 5 + 1 + "%";
-        })
-    }
-
     return (
         <>
-            <div id = "noise-overlay" className="noise-overlay" />
             <BrowserRouter>
                 <Colors />
                 <Misc />

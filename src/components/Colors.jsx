@@ -28,7 +28,6 @@ const Colors = () => {
               }`
         ).then((data) => {
             data.forEach((obj) => {
-                console.log(obj)
                 if (obj.color_code_element_name === "Project Title Font") {
                     setProjectTitleColor(obj.color_code);
                 } else if (obj.color_code_element_name === "Navigation Bar Background") {

@@ -28,17 +28,6 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
   position: relative;
 }
 
-.noise-overlay {
-  position: fixed;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: url(https://grainy-gradients.vercel.app/noise.svg);
-  filter: contrast(50%) brightness(50%);
-}
-
 .project-title {
   position: absolute;
   z-index: 999;
@@ -51,4 +40,8 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
   padding: 1rem;
   border-radius: 10px;
   text-transform: uppercase;
+}
+
+.footer-container {
+  font-family: Arial, Helvetica, sans-serif;
 }/*# sourceMappingURL=root.css.map */

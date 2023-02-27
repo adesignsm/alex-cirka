@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useEffect, useState } from "react";
 import $ from "jquery";
 
 import "../styles/loading/loading.css";
-import loadingBackground from "../media/BOBBY-BULLY-CHAIN.jpg";
 
 import {Style} from "react-style-tag";
 import sanityClient from "../client";
@@ -28,7 +27,9 @@ const Loading = () => {
     }
 
     const loadingReq = () => {
-        return new Promise(resolve => setTimeout(() => resolve(), 2500));
+        return new Promise(resolve => setTimeout(() => {
+            resolve();
+        }, 2500));
     }
 
     const removeLoading = () => {

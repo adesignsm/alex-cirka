@@ -12,7 +12,7 @@
 .project-container img, .project-container video, .project-container iframe {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   -o-object-fit: contain;
      object-fit: contain;
 }

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
-import $ from "jquery";
 
 import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -27,49 +26,6 @@ const Projects = () => {
 
         return `https://cdn.sanity.io/files/ot5ilm3g/production/${strUrl}`;
     }
-
-    let $myDiv = $(".project-title");
-
-    function isTouchDevice() {
-        try {
-            document.createEvent("TouchEvent");
-            return true;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    const move = (e) => {
-        try {
-            var x = !isTouchDevice() ? e.pageX : e.touches[0].pageX;
-            var y = !isTouchDevice() ? e.pageY : e.touches[0].pageY;
-        } catch (e) {}
-
-        document.querySelector(".project-title").style.left = x - 140 + "px";
-        document.querySelector(".project-title").style.top = y - 190 + "px";
-
-        if (e.target.className === "project-item") {
-            $myDiv.fadeIn(250);
-            $myDiv.html(e.target.dataset.projectTitle);
-        } else {
-            $myDiv.fadeOut(250);
-        }
-    };
-
-    document.addEventListener("mousemove", (e) => {
-        if (window.location.href.includes("/Project-")) {
-            return;
-        } else {
-            move(e);
-        }
-    });
-    document.addEventListener("touchmove", (e) => {
-        if (window.location.href.includes("/Project-")) {
-            return;
-        } else {
-            move(e);
-        }
-    });
 
     useEffect(() => {
         sanityClient.fetch(
