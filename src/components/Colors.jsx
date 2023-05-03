@@ -97,9 +97,9 @@ const Colors = () => {
                 }
 
                 /*footer styles*/
-                #footer-container {
+                /*#footer-container {
                     background-color: ${footerBg};
-                }
+                }*/
                 #footer-container h4 {
                     color: ${footerFontColor}
                 }

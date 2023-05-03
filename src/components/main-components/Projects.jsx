@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import $ from "jquery";
 import { NavLink } from "react-router-dom";
 
 import sanityClient from "../../client";
@@ -26,6 +27,73 @@ const Projects = () => {
 
         return `https://cdn.sanity.io/files/ot5ilm3g/production/${strUrl}`;
     }
+
+    // const applyProjectSpan = (e) => {
+    //     if (e.target.classList.contains("project-item")) {
+    //         let parentElChildren = e.target.parentElement.childNodes;
+    //         let parentElBounds = e.target.parentElement.getBoundingClientRect();
+
+    //         let parentElCenterX = parentElBounds.left + parentElBounds.width / 2
+    //         let parentElCenterY = e.target.parentElement.offsetTop + parentElBounds.height / 2;
+
+    //         if (parentElChildren.length > 0 && parentElChildren.length < 2) {
+    //             let tag = document.createElement("span");
+    //             tag.className = "project-title-span";
+    //             tag.innerHTML = e.target.dataset.projectTitle;
+    //             e.target.parentElement.appendChild(tag);
+
+    //             tag.style.top = parentElCenterY + "px";
+    //             tag.style.left = parentElCenterX + "px";
+    //         } else {
+    //             return;
+    //         }
+    //     }
+    // }
+
+    let $myDiv = $(".project-title");
+
+    function isTouchDevice() {
+        try {
+            document.createEvent("TouchEvent");
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    const move = (e) => {
+        try {
+            var x = !isTouchDevice() ? e.pageX : e.touches[0].pageX;
+            var y = !isTouchDevice() ? e.pageY : e.touches[0].pageY;
+        } catch (e) {}
+
+        document.querySelector(".project-title").style.left = x - 200 + "px";
+        document.querySelector(".project-title").style.top = y - 300 + "px";
+
+        if (e.target.className === "project-item") {
+            $myDiv.fadeIn(250);
+            $myDiv.html(e.target.dataset.projectTitle);
+        } else {
+            $myDiv.fadeOut(250);
+        }
+    };
+
+    document.addEventListener("mousemove", (e) => {
+        if (window.location.href.includes("/Project-") || 
+            window.location.href.includes("/archive") || window.location.href.includes("/about")) {
+            return;
+        } else {
+            move(e);
+        }
+    });
+    document.addEventListener("touchmove", (e) => {
+        if (window.location.href.includes("/Project-") || 
+            window.location.href.includes("/archive") || window.location.href.includes("/about")) {
+            return;
+        } else {
+            move(e);
+        }
+    });
 
     useEffect(() => {
         sanityClient.fetch(
@@ -77,7 +145,7 @@ const Projects = () => {
                                 let link = `/projects/${project.project_title}`;
                                 let projectLink = link.replace(" ", "-");
                                 return (
-                                    <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}> 
+                                    <NavLink className="navbar-item" activeclassname="is-active" to={projectLink}>
                                         <img className="project-item" data-project-title={project.project_title} src={urlFor(media.asset._ref, Math.floor(media.image_width * 10))} />
                                     </NavLink>
                                 )

@@ -1,3 +1,7 @@
+#loading-page-div {
+  display: none;
+}
+
 #loading-container {
   position: fixed;
   top: 0;
@@ -20,4 +24,13 @@
   font-weight: 900;
   font-size: 5rem;
   color: var(--primary-color);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 690px) {
+  #loading-container {
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background-position-y: 0vh;
+  }
 }/*# sourceMappingURL=loading.css.map */

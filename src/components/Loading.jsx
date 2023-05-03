@@ -54,6 +54,10 @@ const Loading = () => {
     }, []);
     
     useLayoutEffect(() => {
+        setTimeout(() => {
+            $("#loading-page-div").delay(500).fadeIn(500);
+        }, 10);
+
         loadingReq().then(() => {
             const loadingScreen = document.getElementById("loading-page-div");
 
@@ -62,7 +66,7 @@ const Loading = () => {
                 setLoadingState(!loadingState);
             }
         })
-    });
+    }, []);
 
     // console.log(loadingVideo);
     // console.log(loadingDefaultImage);

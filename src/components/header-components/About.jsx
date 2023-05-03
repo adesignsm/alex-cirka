@@ -60,7 +60,11 @@ const About = () => {
         e.preventDefault();
 
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID).then((result) => {
-            console.log(result.text);
+            if (result.text === "OK") {
+                document.querySelector(".submit-button").innerHTML = "Message sent. Thank you";
+            } else {
+                document.querySelector(".submit-button").innerHTML = "Sorry. Your message was not sent";
+            }
         }, (error) => {
             console.log(error.text);
         });
@@ -105,7 +109,7 @@ const About = () => {
                         <Form.Field control={Input} name='user_email' placeholder='Email' required/>
                         <Form.Field control={Input} name='user_name'placeholder='Name' required />
                         <Form.Field control={TextArea} name='user_message' placeholder='Message'required/>
-                        <Button type='submit' color='green'>Submit</Button>
+                        <Button className="submit-button" type='submit' color='green'>Submit</Button>
                     </Form>
                 </div>
             </div>

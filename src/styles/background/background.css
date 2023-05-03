@@ -1,0 +1,41 @@
+.background-effect {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  filter: blur(100px);
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 700px;
+  animation: move 25s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+}
+
+.yellow {
+  background-color: #E3E287;
+}
+
+.white {
+  background-color: #FAF9F6;
+}
+
+.transparent {
+  background-color: transparent;
+}
+@keyframes move {
+  from {
+    transform: rotate(-90deg);
+    border-radius: 24% 76% 35% 65%/27% 36% 64% 73%;
+  }
+  to {
+    transform: rotate(-10deg);
+    border-radius: 76% 24% 33% 67%/68% 55% 45% 32%;
+  }
+}/*# sourceMappingURL=background.css.map */

@@ -88,7 +88,6 @@ const SingleProject = () => {
                                         }
                                     </Style>
                                     {projectData[project].project_media.map((media) => {
-                                        console.log(media._type);
                                         if (media._type === "image_upload") {
                                             return (
                                                 <img src={urlFor(media.asset._ref)} />

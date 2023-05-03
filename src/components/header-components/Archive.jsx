@@ -36,20 +36,24 @@ const Archive = () => {
     }, []);
 
     const setPositionAndRotation = () => {
-        let MIN_HEIGHT = 200, MAX_HEIGHT = 400;
-        let MIN_WIDTH = 300, MAX_WIDTH = window.innerWidth / 2;
-        let MIN_ROTATE = -20, MAX_ROTATE = 20;
-
-        setTimeout(() => {
-            let thumbnails = document.querySelectorAll(".thumbnail");
-            thumbnails.forEach((thumbnail) => {
-                thumbnail.style.top = `${Math.floor(Math.random() * (MAX_HEIGHT - MIN_HEIGHT + 1) + MIN_HEIGHT)}px`;
-                thumbnail.style.left = `${Math.floor(Math.random() * (MAX_WIDTH - MIN_WIDTH + 1) + MIN_WIDTH)}px`;
+        const init = () => {
+            let MIN_HEIGHT = 200, MAX_HEIGHT = 400;
+            let MIN_WIDTH = 300, MAX_WIDTH = window.innerWidth / 2;
+            let MIN_ROTATE = -20, MAX_ROTATE = 20;
     
-                thumbnail.style.transform = `rotate(${Math.floor(Math.random() * (MAX_ROTATE - MIN_ROTATE + 1) + MIN_ROTATE)}deg)`;
-                $(".thumbnail").draggable();
-            });
-        }, 10);
+            setTimeout(() => {
+                let thumbnails = document.querySelectorAll(".thumbnail");
+                thumbnails.forEach((thumbnail) => {
+                    thumbnail.style.top = `${Math.floor(Math.random() * (MAX_HEIGHT - MIN_HEIGHT + 1) + MIN_HEIGHT)}px`;
+                    thumbnail.style.left = `${Math.floor(Math.random() * (MAX_WIDTH - MIN_WIDTH + 1) + MIN_WIDTH)}px`;
+        
+                    thumbnail.style.transform = `rotate(${Math.floor(Math.random() * (MAX_ROTATE - MIN_ROTATE + 1) + MIN_ROTATE)}deg)`;
+                    $(".thumbnail").draggable();
+                });
+            }, 10);
+        }
+
+        if (window.innerWidth >= 690) init();
     }
 
     return (

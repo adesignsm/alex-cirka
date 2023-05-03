@@ -1,9 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import $ from "jquery";
 
 import "./styles/root/root.css";
 import Colors from "./components/Colors";
 import Misc from "./components/Misc";
+import Background from "./components/Background";
+import PageNotFound from "./components/PageNotFound";
 
 import Menu from "./components/main-components/Menu";
 import Home from "./components/Home";
@@ -25,8 +28,8 @@ const App = () => {
             }, 500);
         } else {
             setTimeout(() => {
-                document.getElementsByTagName("body")[0].style.backgroundColor = "#F5FD9D";
-                document.querySelector(".navbar").style.backgroundColor = "#F5FD9D";
+                document.getElementsByTagName("body")[0].style.backgroundColor = "#E3E192";
+                document.querySelector(".navbar").style.backgroundColor = "#E3E192";
     
                 document.querySelector("#main-menu-desktop a.navbar-item:nth-child(1)").style.color = "#000";
                 document.querySelector("#main-menu-desktop a.navbar-item:nth-child(2)").style.color = "#000";
@@ -38,6 +41,7 @@ const App = () => {
     return (
         <>
             <BrowserRouter>
+                <Background />
                 <Colors />
                 <Misc />
                 <Menu />
@@ -47,6 +51,7 @@ const App = () => {
                         <Route exact path="/" element={<Home />} />
                         <Route path="/archive" element={<Archive />} />
                         <Route path="/projects/:projectId" element={<SingleProject />} />
+                        <Route path="*" element={<PageNotFound />} />
                     </Routes>
                     <Footer />
                 </div>
